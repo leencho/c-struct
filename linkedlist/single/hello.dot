@@ -1,0 +1,11 @@
+digraph Singlylinkedlist {
+node [shape=circle];
+node0 [label="two"];
+node0 ->node1;
+node1 [label="Three"];
+node1 ->node2;
+node2 [label="one"];
+node2 ->node3;
+node3 [label="four"];
+node3 -> NULL;
+}
