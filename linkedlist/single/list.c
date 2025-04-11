@@ -54,6 +54,74 @@ int size_list(list_t *list){
 }
 
 
+
+
+//add item to the head of the list
+// return -1 on error 1 on success
+
+int list_addfist(list_t *list, void *item){
+    node_t *new_node = malloc(sizeof(node_t));
+    if(new_node == NULL){
+        fprintf(stderr, "Could not create node becouse of: %s", strerror(errno));
+        return -1;
+    }
+
+    new_node->data = item;
+    //[head] -> [what] -> [ever] -> [ in the list]
+    new_node->next = list->head;// [item]->[head]
+    list->head = new_node; //[head]->[item]->[what] -> [ever] -> [ in the list]
+    return 1;
+}
+
+
+//add item to the tail of the list
+//return -1 on error, 1 on success
+
+int list_addlast(list_t *list, void *item){
+    node_t *new_node = malloc(sizeof(node_t));
+    if(new_node == NULL){
+        fprintf(stderr, "could not create node becouse of: %s\n", strerror(errno));
+        return -1;
+    }
+    new_node->data = item;
+    if(list->head == NULL){
+        list->head = new_node;
+        new_node->next = NULL;
+        return 1;
+    }
+    node_t *current=list->head;
+    while(current->next != NULL){
+        current = current->next;
+    }
+    current->next = new_node;
+    new_node->next = NULL;
+    return 1;
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 int list_addfirst(list_t *list, void*item){
     node_t *new_node = malloc(sizeof(node_t));
     if(new_node == NULL){
@@ -69,7 +137,11 @@ int list_addfirst(list_t *list, void*item){
 
 }
 
+*/
 
+
+
+/*
 
 
 
@@ -100,6 +172,8 @@ int list_addlast(list_t *list, void *item){
     
     
 }
+
+*/
 
 
 void print_l(list_t *list){
@@ -146,19 +220,19 @@ void print_list(list_t *list, const char *filename){
 
 
 
-/*
 
-void* get_element(list_t *list, int index){
 
-}
-int remove_element(list_t *list, int index){
+// void* get_element(list_t *list, int index){
 
-}
-int insert_element(list_t *list, void *item, int index){
+// }
+// int remove_element(list_t *list, int index){
 
-}
+// }
+// int insert_element(list_t *list, void *item, int index){
 
-*/
+// }
+
+
 
 
 
