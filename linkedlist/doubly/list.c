@@ -65,22 +65,19 @@ int list_size(list_t *list){
 }
 int list_addfirst(list_t *list, void *item){
     node_t *new_node = node_create(item);
-    if(!new_node){
-        fprintf(stderr, "could not create node becouse of: %s\n", strerror(errno));
+    if(new_node == NULL){
+        fprintf(stderr, "could not create node becouse of error: %s\n", strerror(errno));
         return -1;
     }
-    if(list->head == NULL){
+    if(list->head==NULL){
         list->head = new_node;
         list->tail = new_node;
-
+        list->size++;
     }else{
         new_node->next = list->head;
         list->head->prev = new_node;
         list->head = new_node;
-       
     }
-    list->size++;
-
     return 0;
     
     
@@ -89,23 +86,18 @@ int list_addfirst(list_t *list, void *item){
 
 int list_addlast(list_t *list, void *item){
     node_t *new_node = node_create(item);
-    if(!new_node){
-        fprintf(stderr, "could not create node becouse of: %s\n", strerror(errno));
+    if(new_node == NULL){
+        fprintf(stderr, "could not create node becouse of error: %s\n", strerror(errno));
         return -1;
     }
-    if(list->head == NULL){
+    if(list->tail == NULL){
         list->head = new_node;
-        list->tail=new_node;
-      
-        
+        list->tail = new_node;
     }else{
         new_node->prev = list->tail;
-        list->tail->next=new_node;
+        list->tail->next = new_node;
         list->tail = new_node;
-       
     }
-    list->size++;
-
     return 0;
 
 }

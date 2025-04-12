@@ -1,0 +1,6 @@
+digraph circularlist {
+one -> two
+two -> three
+three -> four
+four -> one
+}
