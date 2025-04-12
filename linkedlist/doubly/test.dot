@@ -1,0 +1,10 @@
+digraph doublylist {
+four -> two; 
+two -> one; 
+two -> four; 
+one -> ten; 
+one -> two; 
+ten -> three; 
+ten -> one; 
+three -> ten; 
+}
